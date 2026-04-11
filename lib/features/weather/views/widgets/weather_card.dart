@@ -19,16 +19,16 @@ class WeatherCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color: const Color(0xFF1E1E1E).withAlpha(150),
-        borderRadius: BorderRadius.circular(20),
+        color: Colors.white.withAlpha(10),
+        borderRadius: BorderRadius.circular(24),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withAlpha(50),
-            blurRadius: 10,
+            color: Colors.black.withAlpha(30),
+            blurRadius: 15,
             spreadRadius: 1,
-            offset: const Offset(0, 4),
+            offset: const Offset(0, 8),
           ),
         ],
         border: Border.all(
@@ -42,10 +42,10 @@ class WeatherCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Icon(icon, size: 36, color: color),
+              Icon(icon, size: 40, color: color),
             ],
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 24),
           Row(
             crossAxisAlignment: CrossAxisAlignment.baseline,
             textBaseline: TextBaseline.alphabetic,
@@ -53,7 +53,7 @@ class WeatherCard extends StatelessWidget {
               Text(
                 value,
                 style: TextStyle(
-                  fontSize: 36,
+                  fontSize: 40,
                   fontWeight: FontWeight.bold,
                   color: color,
                 ),
@@ -63,7 +63,7 @@ class WeatherCard extends StatelessWidget {
                 Text(
                   unit,
                   style: const TextStyle(
-                    fontSize: 18,
+                    fontSize: 20,
                     color: Colors.white70,
                     fontWeight: FontWeight.w500,
                   ),
@@ -75,9 +75,9 @@ class WeatherCard extends StatelessWidget {
             title,
             style: const TextStyle(
               fontSize: 16,
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w600,
               color: Colors.white70,
-              letterSpacing: 0.5,
+              letterSpacing: 1.0,
             ),
           ),
         ],

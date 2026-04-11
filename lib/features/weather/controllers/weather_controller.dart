@@ -20,11 +20,19 @@ class WeatherController extends ChangeNotifier {
     return "Bright";
   }
 
-  List<Color> get heroGradient {
+  LinearGradient get heroGradient {
     if (lightRange == "Bright") {
-      return [const Color(0xFF0277BD), const Color(0xFF00BCD4)];
+      return const LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: [Color(0xFF0277BD), Color(0xFF00BCD4)],
+      );
     }
-    return [const Color(0xFF102027), const Color(0xFF263238)];
+    return const LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+      colors: [Color(0xFF102027), Color(0xFF263238)],
+    );
   }
 
   String get systemStatus {
