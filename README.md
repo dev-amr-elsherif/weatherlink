@@ -1,7 +1,7 @@
 # WeatherLink
 ### Intelligent Hybrid Edge-Computing & Smart Home IoT Dashboard
 
-[![Download APK](https://img.shields.io/badge/Download_APK-v1.0.0-success)](#)
+[![Download APK](https://img.shields.io/badge/Download_APK-v1.0.0-success)](https://github.com/dev-amr-elsherif/weatherlink/releases/download/v1.0.0/app-release.apk)
 
 ## 🏗 Core Architecture: The Hybrid Edge-Computing Model
 
