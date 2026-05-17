@@ -1,43 +1,45 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'core/routes/app_routes.dart';
-import 'features/weather/controllers/weather_controller.dart';
+import 'core/theme/app_theme.dart';
+import 'features/iot_control/presentation/bloc/iot_bloc.dart';
+import 'features/iot_control/presentation/pages/main_layout_page.dart';
+import 'injection_container.dart' as di;
 
-void main() {
-  runApp(const WeatherLinkApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
+  await di.init();
+
+  runApp(
+    EasyLocalization(
+      supportedLocales: const [Locale('en'), Locale('ar')],
+      path: 'assets/translations',
+      fallbackLocale: const Locale('en'),
+      useOnlyLangCode: true,
+      child: const MyApp(),
+    ),
+  );
 }
 
-class WeatherLinkApp extends StatelessWidget {
-  const WeatherLinkApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (_) => WeatherController()..startAutoRefresh(),
-        ),
-      ],
+    return BlocProvider<IotBloc>(
+      create: (_) => di.sl<IotBloc>()..add(StartPollingEvent()),
       child: MaterialApp(
-        title: 'WeatherLink',
+        title: 'IoT Clean Architecture',
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          brightness: Brightness.dark,
-          scaffoldBackgroundColor: const Color(0xFF121212),
-          colorScheme: const ColorScheme.dark(
-            primary: Colors.cyanAccent,
-            secondary: Colors.amberAccent,
-            surface: Color(0xFF1E1E1E),
-          ),
-          useMaterial3: true,
-          appBarTheme: const AppBarTheme(
-            backgroundColor: Color(0xFF1E1E1E),
-            elevation: 0,
-          ),
-        ),
-        initialRoute: AppRoutes.home,
-        onGenerateRoute: AppRoutes.generateRoute,
+        themeMode: ThemeMode.dark,
+        theme: AppTheme.lightTheme,
+        darkTheme: AppTheme.darkTheme,
+        home: const MainLayoutPage(),
       ),
     );
   }

@@ -1,6 +1,6 @@
 {
-    "name": "weatherlink",
-    "short_name": "weatherlink",
+    "name": "iiot",
+    "short_name": "iiot",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
